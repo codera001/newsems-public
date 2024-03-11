@@ -1,0 +1,118 @@
+import {
+  UserCircleIcon,
+  ArrowRightIcon,
+  ClockIcon,
+} from "@heroicons/react/24/solid";
+import { Icon } from "@iconify/react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
+const BlogComponent = ({
+  title,
+  description,
+  Author,
+  date,
+  id,
+  image,
+  socialLinks,
+  content,
+}) => {
+  console.log(socialLinks);
+  const router = useRouter();
+  const readMore = () => {
+    router.push(`/blog/${id}`);
+  };
+
+  return (
+    <div className="mt-10 border-b border-gray-400/20 pt-4 md:flex md:items-start md:gap-10">
+      {image !== null ? <Image src={image} /> : " "}
+      <div className="flex flex-grow flex-col px-4 md:justify-between">
+        <h2 className="mb-2 text-xl font-medium">{title}</h2>
+        <p className="mb-5 text-justify italic lg:w-[400px]">{description}</p>
+        <div className="mb-3 flex flex-wrap gap-3">
+          <div className="flex items-center">
+            <UserCircleIcon className="h-3 w-3" />
+            <p className="text-xs">{Author}</p>
+          </div>
+          <div className="flex items-center">
+            <ClockIcon className="h-3 w-3" />
+            <p className="text-xs">{date}</p>
+          </div>
+          <div className="flex items-center">
+            <UserCircleIcon className="h-3 w-3" />
+            <p className="text-xs">Vyacheslav</p>
+          </div>
+          <div className="flex items-center">
+            <UserCircleIcon className="h-3 w-3" />
+            <p className="text-xs">Vyacheslav</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-1">
+          <a
+            href={socialLinks.facebook}
+            className="rounded-md bg-color-primary px-8 py-1 text-white"
+          >
+            <Icon
+              icon="simple-icons:facebook"
+              className="h-4 w-4  transition duration-200 ease-in-out hover:opacity-75"
+            />
+          </a>
+          <a
+            href={socialLinks.twitter}
+            className="rounded-md bg-color-primary px-8 py-1 text-white"
+          >
+            <Icon
+              icon="simple-icons:twitter"
+              className="h-4 w-4  transition duration-200 ease-in-out hover:opacity-75"
+            />
+          </a>
+          <a
+            href={socialLinks.instagram}
+            className="rounded-md bg-color-primary px-8 py-1 text-white"
+          >
+            <Icon
+              icon="simple-icons:instagram"
+              className="h-4 w-4  transition duration-200 ease-in-out hover:opacity-75"
+            />
+          </a>
+          <a
+            href={socialLinks.telegram}
+            className="rounded-md bg-color-primary px-8 py-1 text-white"
+          >
+            <Icon
+              icon="simple-icons:telegram"
+              className="h-4 w-4  transition duration-200 ease-in-out hover:opacity-75"
+            />
+          </a>
+          {/* <Link className="rounded-md bg-color-primary px-8 py-1 text-white">
+            <Icon
+              icon="simple-icons:reddit"
+              className="h-4 w-4  transition duration-200 ease-in-out hover:opacity-75"
+              />
+            </Link> */}
+          {/* <Link className="rounded-md bg-color-primary px-8 py-1 text-white">
+            <Icon
+              icon="simple-icons:pinterest"
+              className="h-4 w-4  transition duration-200 ease-in-out hover:opacity-75"
+              />
+            </Link> */}
+        </div>
+        <div
+          className="mt-5 text-justify"
+          dangerouslySetInnerHTML={{ __html: content.substring(0, 200) }}
+        ></div>
+        <div
+          className="group mb-7 mt-5 flex w-[140px] items-center space-x-2 border border-color-primary_darken px-3 py-2 text-color-primary_darken"
+          onClick={() => {
+            readMore();
+          }}
+        >
+          <button>Read More</button>
+          <ArrowRightIcon className="h-4 w-4 transition-all group-hover:translate-x-2" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BlogComponent;

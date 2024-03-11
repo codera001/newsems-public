@@ -1,0 +1,66 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
+
+const Popup = ({ isVisible, onClose }) => {
+  const url = "https://api.diginums.com/api" + "/user";
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    if (!isVisible) return;
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url, {
+          timeout: 30000,
+          params: {
+            userid: sessionStorage.getItem("id"),
+          },
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("authToken")}`,
+          },
+        });
+        setData(response.data.user.apikey);
+      } catch (error) {
+        toast.error(error.message);
+      }
+    };
+    fetchData();
+  }, [isVisible, url]);
+
+  if (data.length === 0) {
+    return <div>Please wait...</div>;
+  }
+  return (
+    <div className="fixed inset-0 z-50 flex h-screen w-screen items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm">
+      <div className="flex w-full max-w-xl flex-col  items-center justify-center bg-white p-2">
+        <button
+          onClick={() => onClose()}
+          className="place-self-end rounded-full bg-color-primary px-4 py-2"
+        >
+          X
+        </button>
+        <div className="rounded bg-white p-2">
+          <p className="text-sm md:text-base">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas,
+            eveniet nihil. Ipsa autem quibusdam nisi, rerum libero perspiciatis
+            mollitia nostrum dolor, est et, voluptatibus eos debitis
+            exercitationem animi delectus itaque.
+          </p>
+          <p className="my-4 text-sm font-bold md:text-base">
+            API key: <span className="text-color-api-red">{data}</span>
+          </p>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/lTPWLdU9uvI"
+            title="YouTube video player"
+            border="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Popup;

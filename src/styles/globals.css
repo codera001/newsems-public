@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root,
+  .app {
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+.api-box {
+  padding: 10px;
+}
+
+.navbar-scroll {
+  height: 60px;
+}
+
+.sticky-top {
+  top: calc(60px + 1em);
+}
+
+.customShadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.roll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.parent {
+  position: relative;
+  overflow: hidden;
+  /* grouip */
+}
+
+.after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 3rem;
+  height: 5rem;
+  width: 100%;
+  background: #1f45a3;
+  transition: all 0.3s ease-in-out;
+  border-radius: 1.5rem;
+  /* group-hover:-mt-4 */
+}
+
+.child {
+  position: relative;
+}
+
+.table {
+  width: 100%;
+}
+
+.header-row,
+.header-row-2 {
+  display: none;
+}
+
+.table-row,
+.table-row-2 {
+  width: 100%;
+  padding: 12px 10px;
+  display: grid;
+  column-gap: 10px;
+  row-gap: 25px;
+  margin-bottom: 50px;
+}
+
+.table-row {
+  grid-template-areas:
+    "a  b"
+    "c  d"
+    "e  f"
+    "g  g";
+}
+
+.table-row-2 {
+  grid-template-areas:
+    "aa bb"
+    "cc dd"
+    "ee ee";
+}
+
+.id2 {
+  grid-area: aa;
+}
+
+.date2 {
+  grid-area: bb;
+}
+
+.type2 {
+  grid-area: cc;
+}
+
+.price2 {
+  grid-area: dd;
+}
+
+.message2 {
+  grid-area: ee;
+}
+
+.table-row:nth-of-type(2n),
+.rent-row:nth-of-type(2n),
+.table-row-2:nth-of-type(2n) {
+  background: #e3f0ff;
+}
+
+.table-row:nth-of-type(2n + 1),
+.rent-row:nth-of-type(2n + 1),
+.table-row-2:nth-of-type(2n) {
+  background: #fff;
+}
+.id {
+  grid-area: a;
+}
+.bought {
+  grid-area: b;
+}
+.service {
+  grid-area: c;
+}
+.country {
+  grid-area: d;
+}
+.phone {
+  grid-area: e;
+}
+.price {
+  grid-area: f;
+  /* text-align: right; */
+}
+.message {
+  grid-area: g;
+}
+.message p,
+.price2 {
+  text-align: center;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.user-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.user-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@media only screen and (min-width: 991.99px) {
+  .header-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 4fr 3fr 3fr 4fr 2fr 4fr;
+    column-gap: 10px;
+    align-items: stretch;
+  }
+
+  .header-row-2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 4fr 3fr 3fr 4fr;
+    column-gap: 10px;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .table-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 4fr 3fr 3fr 4fr 2fr 4fr;
+    column-gap: 10px;
+    row-gap: 0;
+    align-items: stretch;
+    margin-bottom: 0;
+    grid-template-areas: "a b c d e f g";
+  }
+
+  .table-row-2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 4fr 3fr 3fr 4fr;
+    column-gap: 10px;
+    row-gap: 0;
+    align-items: stretch;
+    margin-bottom: 0;
+    grid-template-areas: "aa bb cc dd ee";
+    text-align: center;
+  }
+
+  .table h6 {
+    display: none;
+  }
+
+  .price {
+    text-align: right;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .api-box {
+    min-width: 100% !important;
+    padding: 5px;
+    font-size: 0.6rem !important;
+  }
+
+  .api-table {
+    min-width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .api-box {
+    width: 100%;
+    max-width: calc(100vw - 30px);
+    overflow-x: auto;
+  }
+}
