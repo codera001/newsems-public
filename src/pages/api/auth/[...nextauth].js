@@ -13,16 +13,16 @@ export const NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
-      clientId: "511064560821-vvsmbo0bca01l5mg2d6p8pqeqghva2m4.apps.googleusercontent.com" || process.env.GOOGLE_CLIENT_ID,
-      clientSecret: "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" || process.env.GOOGLE_CLIENT_SECRET,
+      clientId:  process.env.GOOGLE_CLIENT_ID,
+      clientSecret:  process.env.GOOGLE_CLIENT_SECRET,
     }),
     GithubProvider({
-      clientId: "2d727d6faa1fcccbde4c" || process.env.GITHUB_ID,
-      clientSecret: "14d449b88f573f273e448aa89d2d62d0f25e0040" || process.env.GITHUB_SECRET,
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
     }),
     TwitterProvider({
-      clientId: "3XBOpJ2B0qMNnIgwNmZz2sfFH" || process.env.TWITTER_CLIENT_ID,
-      clientSecret: "l85GbBJNhezmUhil1tcU8GB6UZYCIViEuWio5Lw8WcXmZuP8W3" || process.env.TWITTER_CLIENT_SECRET,
+      clientId:  process.env.TWITTER_CLIENT_ID,
+      clientSecret:  process.env.TWITTER_CLIENT_SECRET,
       version: "2.0", // opt-in to Twitter OAuth 2.0
     }),
     FacebookProvider({
